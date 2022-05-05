@@ -26,5 +26,11 @@ extension Bundle {
                 return bundle
             }
         }
+        
+        #if SWIFT_PACKAGE
+        return Bundle.module
+        #else
+        return Bundle(for: CurrentBundleFinder.self)
+        #endif
     }()
 }
